@@ -1,86 +1,72 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="樱花阁官方网站">
-    <title>樱花阁</title>
-    <link rel="icon" href="icon.png">
+    <title>Your Website Title</title>
     <style>
+        /* Reset and basic styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #030029; /* 深蓝色背景 */
-            color: #00ffff; /* 青色文字 */
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            position: relative;
+            padding: 0;
         }
-        h2 {
-            text-align: center;
-            margin: 10px 0;
-            border-bottom: 2px solid #00ffff; /* 青色下划线 */
-            padding-bottom: 5px;
-        }
+
         .container {
-            width: 100%;
             max-width: 800px;
-            text-align: center;
-            opacity: 1; /* 直接设置为1，去除了渐变效果 */
+            margin: 0 auto;
             padding: 20px;
         }
-        hr {
-            border: 1px solid #00ffff; /* 青色分隔线 */
-            width: 80%;
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: #00ffff;
         }
+
+        p {
+            font-size: 16px;
+        }
+
+        /* Button styles */
         .button {
-            background-color: #00ffff; /* 青色按钮背景 */
+            background-color: #00ffff;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 14px 28px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
+            border-radius: 25px; /* 圆角按钮 */
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
         }
+
         .button:hover {
-            background-color: #33ccff; /* 按钮悬停时的颜色 */
-            transform: scale(1.05);
+            background-color: #33ccff; /* 悬停时的颜色 */
+            transform: scale(1.05); /* 稍微放大 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 悬停时的阴影效果 */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>欢迎来到樱花阁官方网站</h2>
-        <h2>网站由 YOTRI 制作</h2>
-        <h2>主要负责人为 Linus 和 Xil0</h2>
-        <h2>关于樱花阁的价格表，成员信息，契约等更多功能会在这里发布</h2>
-        <a href="Main.html" class="button">更多功能</a>
-        <a href="indexJP.html" class="button">网站日语选择项</a>
-        <h2>2024年6月29日 10AM</h2>
-        <h2>网站改名为樱花阁</h2>
-        <h2>加入更多动态，后续会持续修改</h2>
-        <h2>删除其他不必要的功能，加入更多选择项</h2>
-        <hr>
+        <header>
+            <h1>Welcome to Our Website</h1>
+        </header>
+        <main>
+            <p>This is a paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fringilla neque at elit vehicula tristique. Nulla facilisi.</p>
+            <a href="#" class="button">Learn More</a>
+        </main>
+        <footer>
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </footer>
     </div>
-
-    <script>
-        function createCherryBlossom() {
-            // 移除樱花效果的 JavaScript 部分
-        }
-
-        // 清除原有定时器
-        const cherryBlossomInterval = setInterval(createCherryBlossom, 2000);
-        clearInterval(cherryBlossomInterval);
-    </script>
 </body>
 </html>
+
 
