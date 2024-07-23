@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Website</title>
+    <title>Your Website Title</title>
     <style>
         /* Reset and basic styles */
         body {
@@ -26,18 +26,39 @@
             font-size: 2.5em;
             color: #00ffff;
             position: relative;
+            transition: color 0.3s; /* 颜色过渡效果 */
+            cursor: pointer;
             display: inline-block;
+            margin: 0;
+            padding: 0;
         }
 
-        h1 span {
-            display: inline-block;
-            transition: top 0.2s;
+        h1::before {
+            content: ''; /* 必须有内容才能显示伪类 */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 255, 255, 0.3); /* 半透明的发光效果 */
+            transform: scale(1);
+            transform-origin: bottom left;
+            z-index: -1; /* 将伪类放在标题下方 */
+            transition: transform 0.3s, background-color 0.3s; /* 过渡效果 */
+            border-radius: 5px;
+            pointer-events: none; /* 防止伪类干扰鼠标事件 */
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
         }
 
-        h1:hover span {
-            top: -10px; /* 跳动上升的距离 */
+        h1:hover::before {
+            transform: scale(1.1); /* 放大伪类 */
+            background-color: rgba(0, 255, 255, 0.5); /* 更亮的发光效果 */
         }
-        
+
+        h1:hover {
+            color: #33ccff; /* 鼠标悬停时改变文字颜色 */
+        }
+
         p {
             font-size: 16px;
         }
@@ -67,30 +88,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>
-                <span>W</span>
-                <span>e</span>
-                <span>l</span>
-                <span>c</span>
-                <span>o</span>
-                <span>m</span>
-                <span>e</span>
-                <span> </span>
-                <span>t</span>
-                <span>o</span>
-                <span> </span>
-                <span>O</span>
-                <span>u</span>
-                <span>r</span>
-                <span> </span>
-                <span>W</span>
-                <span>e</span>
-                <span>b</span>
-                <span>s</span>
-                <span>i</span>
-                <span>t</span>
-                <span>e</span>
-            </h1>
+            <h1>Welcome to Our Website</h1>
         </header>
         <main>
             <p>This is a paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fringilla neque at elit vehicula tristique. Nulla facilisi.</p>
@@ -100,20 +98,5 @@
             <p>&copy; 2024 Your Company. All rights reserved.</p>
         </footer>
     </div>
-
-    <script>
-        // JavaScript to handle the animation
-        const letters = document.querySelectorAll('h1 span');
-
-        letters.forEach(letter => {
-            letter.addEventListener('mouseover', () => {
-                letter.style.top = '-20px'; // Adjust the jump height
-            });
-
-            letter.addEventListener('mouseout', () => {
-                letter.style.top = '0';
-            });
-        });
-    </script>
 </body>
 </html>
