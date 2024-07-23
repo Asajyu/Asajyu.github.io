@@ -1,121 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
+    <meta name="description" content="樱花阁官方网站">
+    <title>樱花阁</title>
+    <link rel="icon" href="icon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
-            color: black;
+            background-color: #030029; /* 深蓝色背景 */
+            color: #00ffff; /* 青色文字 */
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
         }
-
-        #arrow-handle {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background-color: black;
-            cursor: pointer;
-            z-index: 9999; /* 确保箭头按钮在最上层 */
+        h2 {
+            text-align: center;
+            margin: 10px 0;
+            border-bottom: 2px solid #00ffff; /* 青色下划线 */
+            padding-bottom: 5px;
         }
-
-        #main-content {
-            margin-left: 20px; /* 箭头按钮的宽度 */
-            transition: margin-left 0.3s ease;
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            opacity: 1; /* 直接设置为1，去除了渐变效果 */
             padding: 20px;
         }
-
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: -300px; /* 初始状态隐藏侧边栏 */
-            width: 300px; /* 侧边栏宽度 */
-            height: 100%;
-            background-color: cyan;
-            transition: left 0.3s ease;
+        hr {
+            border: 1px solid #00ffff; /* 青色分隔线 */
+            width: 80%;
         }
-
-        #sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #sidebar ul li {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        #sidebar ul li a {
+        .button {
+            background-color: #00ffff; /* 青色按钮背景 */
+            border: none;
             color: white;
+            padding: 15px 32px;
+            text-align: center;
             text-decoration: none;
-            font-size: 18px;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
         }
-
-        #sidebar ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        .button:hover {
+            background-color: #33ccff; /* 按钮悬停时的颜色 */
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <!-- 箭头按钮 -->
-    <div id="arrow-handle"></div>
-
-    <!-- 主内容区域 -->
-    <div id="main-content">
-        <h1>Welcome to Your Website</h1>
-        <p>This is the main content of your website.</p>
-    </div>
-
-    <!-- 青色导航栏 -->
-    <div id="sidebar">
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <!-- 可以根据需要添加更多导航链接 -->
-        </ul>
+    <div class="container">
+        <h2>欢迎来到樱花阁官方网站</h2>
+        <h2>网站由 YOTRI 制作</h2>
+        <h2>主要负责人为 Linus 和 Xil0</h2>
+        <h2>关于樱花阁的价格表，成员信息，契约等更多功能会在这里发布</h2>
+        <a href="Main.html" class="button">更多功能</a>
+        <a href="indexJP.html" class="button">网站日语选择项</a>
+        <h2>2024年6月29日 10AM</h2>
+        <h2>网站改名为樱花阁</h2>
+        <h2>加入更多动态，后续会持续修改</h2>
+        <h2>删除其他不必要的功能，加入更多选择项</h2>
+        <hr>
     </div>
 
     <script>
-        const arrowHandle = document.getElementById('arrow-handle');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('main-content');
+        function createCherryBlossom() {
+            // 移除樱花效果的 JavaScript 部分
+        }
 
-        let isDragging = false;
-        let startX;
-        let sidebarWidth = 300; // 侧边栏的宽度
-
-        arrowHandle.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const moveX = e.clientX - startX;
-                const newMarginLeft = moveX + sidebarWidth;
-                mainContent.style.marginLeft = `${newMarginLeft}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                const currentMarginLeft = parseInt(mainContent.style.marginLeft, 10);
-                if (currentMarginLeft >= sidebarWidth / 2) {
-                    sidebar.style.left = '0';
-                } else {
-                    sidebar.style.left = `-${sidebarWidth}px`;
-                }
-                mainContent.style.marginLeft = '20px'; // 恢复到原始状态
-            }
-        });
+        // 清除原有定时器
+        const cherryBlossomInterval = setInterval(createCherryBlossom, 2000);
+        clearInterval(cherryBlossomInterval);
     </script>
 </body>
 </html>
+
