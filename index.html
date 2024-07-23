@@ -3,125 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub 静态网站示例</title>
+    <title>Your Website Title</title>
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff; /* 白色背景 */
-            color: #333333; /* 黑色文字 */
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 20px;
+        #arrow-handle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            cursor: pointer;
+            z-index: 9999; /* 确保箭头按钮在最上层 */
         }
 
-        header {
-            background-color: #5cb85c; /* 草绿色背景 */
-            padding: 15px 0;
+        #main-content {
+            margin-left: 20px; /* 箭头按钮的宽度 */
+            transition: margin-left 0.3s ease;
+            padding: 20px;
         }
 
-        header h1 {
-            color: #ffffff; /* 白色文字 */
-            float: left;
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* 初始状态隐藏侧边栏 */
+            width: 300px; /* 侧边栏宽度 */
+            height: 100%;
+            background-color: cyan;
+            transition: left 0.3s ease;
         }
 
-        nav ul {
-            float: right;
+        #sidebar ul {
             list-style-type: none;
+            padding: 0;
         }
 
-        nav ul li {
-            display: inline;
-            margin-left: 20px;
+        #sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
         }
 
-        nav ul li a {
-            color: #ffffff;
+        #sidebar ul li a {
+            color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 18px;
         }
 
-        nav ul li a:hover {
-            color: #333333; /* 按钮动态化效果 */
-        }
-
-        .hero {
-            background-image: url('hero-background.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .hero h2 {
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #333333; /* 黑色按钮 */
-            color: #ffffff;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #5cb85c; /* 按钮动态化效果 */
+        #sidebar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>GitHub 静态网站</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- 箭头按钮 -->
+    <div id="arrow-handle"></div>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Welcome to GitHub Static Website</h2>
-            <p>This is a simple example of a static website with dynamic effects.</p>
-            <a href="#" class="btn">Get Started</a>
-        </div>
-    </section>
+    <!-- 主内容区域 -->
+    <div id="main-content">
+        <h1>Welcome to Your Website</h1>
+        <p>This is the main content of your website.</p>
+    </div>
+
+    <!-- 青色导航栏 -->
+    <div id="sidebar">
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <!-- 可以根据需要添加更多导航链接 -->
+        </ul>
+    </div>
 
     <script>
-        // 简单的导航栏拖动效果示例
-        const navLinks = document.querySelectorAll('nav ul li a');
+        const arrowHandle = document.getElementById('arrow-handle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
 
-        navLinks.forEach(link => {
-            link.addEventListener('mouseover', () => {
-                link.style.transform = 'translateY(-5px)';
-            });
+        let isDragging = false;
+        let startX;
+        let sidebarWidth = 300; // 侧边栏的宽度
 
-            link.addEventListener('mouseout', () => {
-                link.style.transform = 'translateY(0)';
-            });
+        arrowHandle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const moveX = e.clientX - startX;
+                const newMarginLeft = moveX + sidebarWidth;
+                mainContent.style.marginLeft = `${newMarginLeft}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                const currentMarginLeft = parseInt(mainContent.style.marginLeft, 10);
+                if (currentMarginLeft >= sidebarWidth / 2) {
+                    sidebar.style.left = '0';
+                } else {
+                    sidebar.style.left = `-${sidebarWidth}px`;
+                }
+                mainContent.style.marginLeft = '20px'; // 恢复到原始状态
+            }
         });
     </script>
 </body>
