@@ -1,102 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AsajyuStation</title>
+    <title>ECHO 回声社 | 官方網站</title>
     <style>
-        /* Reset and basic styles */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f0f8ff;
+            background-image: 
+                linear-gradient(45deg, rgba(160, 196, 255, 0.3) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(160, 196, 255, 0.3) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(160, 196, 255, 0.3) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(160, 196, 255, 0.3) 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #4a6da7;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff85a2;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
         }
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            color: #00ffff;
-            position: relative;
-            transition: color 0.3s; /* 颜色过渡效果 */
-            cursor: pointer;
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1::before {
-            content: ''; /* 必须有内容才能显示伪类 */
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 255, 255, 0.3); /* 半透明的发光效果 */
-            transform: scale(1);
-            transform-origin: bottom left;
-            z-index: -1; /* 将伪类放在标题下方 */
-            transition: transform 0.3s, background-color 0.3s; /* 过渡效果 */
-            border-radius: 5px;
-            pointer-events: none; /* 防止伪类干扰鼠标事件 */
-            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
-        }
-
-        h1:hover::before {
-            transform: scale(1.1); /* 放大伪类 */
-            background-color: rgba(0, 255, 255, 0.5); /* 更亮的发光效果 */
-        }
-
-        h1:hover {
-            color: #33ccff; /* 鼠标悬停时改变文字颜色 */
-        }
-
-        p {
-            font-size: 16px;
-        }
-
-        /* Button styles */
-        .button {
-            background-color: #00ffff;
-            border: none;
-            color: white;
-            padding: 14px 28px;
+        .banner {
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 25px; /* 圆角按钮 */
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin-bottom: 3rem;
         }
 
-        .button:hover {
-            background-color: #33ccff; /* 悬停时的颜色 */
-            transform: scale(1.05); /* 稍微放大 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 悬停时的阴影效果 */
+        .banner h1 {
+            color: #4a6da7;
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .member-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #ffb6c1;
+        }
+
+        .blog-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #ff85a2;
+            color: white !important;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .blog-link:hover {
+            background: #ff6b8b;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        /* 新增作品集样式 */
+        .works-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .game-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .game-cover {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .game-cover:hover {
+            transform: scale(1.02);
+        }
+
+        /* 增强联系板块 */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 成员卡片增强 */
+        .member-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home">首頁</a>
+            <a href="#works">作品集</a>
+            <a href="#members">制作成員</a>
+            <a href="#contact">聯絡我們</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>AsajyuStation</h1>
-        </header>
-        <main>
-            <p>このウェブサイトは、Rextusaa さんが運営していて、ここでRextusaa さんが作ったいろんなもの（例えば、サウンドパック、ボカロ、ウェブサイト、動画）を探すことができます</p>
-            <a href="ChooseMain.html" class="button">詳細</a>
-        </main>
-        <footer>
-            <p>&copy; 2024 Rextusaa. All right reserved</p>
-        </footer>
+        <!-- 首页横幅 -->
+        <section id="home" class="banner">
+            <h1>ECHO社</h1>
+            <p>写出自己挚爱的galgame</p>
+            <p>新战国代Galgame正在研发中！将采用Webgal引擎开发</p>
+        </section>
+
+        <!-- 作品集 -->
+        <section id="works" class="works-section">
+            <h2>最新作品</h2>
+            <div class="game-card">
+                <img src="game-cover.jpg" alt="" class="game-cover">
+                <div class="game-info">
+                    <h3>日字校准器</h3>
+                    <p>可以在线编辑文本，并且让日字最大化干净</p>
+                    <div class="feature-list">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <a href="#" class="blog-link">查看详情</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 制作成员 -->
+        <section id="members" class="member-section">
+            <div class="member-grid">
+                <div class="member-card">
+                    <h3>千道 秋（せんどう　しゅう）</h3>
+                    <p>企划 / 剧本监督</p>
+                    <p>代表作品：《星之轨迹》《黄昏协奏曲》</p>
+                    <a href="https://blog.example.com/snow" class="blog-link" target="_blank">个人专栏</a>
+                </div>
+                <!-- 可添加更多成员 -->
+            </div>
+        </section>
+
+        <!-- 联络我们 -->
+        <section id="contact" class="contact-section">
+            <h2>保持联系</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>商务合作</h4>
+                    <p>business@echo-studio.com</p>
+                </div>
+                <div class="contact-card">
+                    <h4>用户支持</h4>
+                    <p>support@echo-studio.com</p>
+                </div>
+                <div class="contact-card">
+                    <h4>社交媒体</h4>
+                    <p>微博：@ECHO回声社</p>
+                    <p>Twitter：@ECHO_Studio</p>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <footer>
+        <p>© 2024 ECHO組 All Rights Reserved</p>
+        <p>聯絡郵箱：3129392318@qq.com</p>
+    </footer>
 </body>
 </html>
